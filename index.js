@@ -3,24 +3,15 @@ var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-var bodyParser = require('body-parser');
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(express.static(__dirname + '/public'));
 
-app.get('/', function (req, res) {
-  res.send('Hola tamara!');
-  console.log('hit');
-});
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
-app.get('/8', function (req, res) {
-  res.send('Hola ocho!');
-  console.log('hit');
-});
-
-app.post('/envio',function(req,res){
-	var param=req.params;
-	console.log('req.body');
-	res.send('Hola lola!' + req.body.Action);
+app.get('/', function(request, response) {
+  //response.render('pages/index');
+  response.send('hola');
 });
 
 app.listen(app.get('port'), function() {
