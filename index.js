@@ -19,6 +19,11 @@ app.get('/dato', function(request, response) {
   response.send('esto es un dato');
 });
 
+app.post('/envio',function(req,res){
+	var param=req.params;
+	console.log('req.body');
+	res.send('Hola lola!' + req.body.Action);
+});
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
