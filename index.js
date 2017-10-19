@@ -1,8 +1,5 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -25,7 +22,7 @@ app.get('/dato', function(request, response) {
 app.post('/envio',function(req,res){
 	var param=req.params;
 	console.log('req.body');
-	res.send('Hola lola!' + req.body.Action);
+	res.send('Hola lola!');
 });
 
 app.listen(app.get('port'), function() {
